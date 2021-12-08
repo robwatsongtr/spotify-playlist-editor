@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar'
 
 function PlaylistApp(props) {
 
    return (
       <>
-        <div className="container">
-          <div className="main-wrapper">
-            this is the main app
-          </div>
-        </div>
+        <Navbar />
       </>
     );
 }
