@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-/* Global Styles */
+/******************* Global Styles **********************/
 :root {
   --primary-color: #204f6e;
   --dark-color: #333333;
@@ -13,14 +13,17 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
+  /*background-color: #fff;*/
   color: #333;
+  background: linear-gradient(lightblue, darkblue);
+  height: 100vh;
 }
 
 a {
@@ -40,7 +43,7 @@ img {
   width: 100%;
 }
 
-/* Utilities */
+/**************************** Utilities ***************/
 .container {
   max-width: 800px;
   margin: auto;
@@ -48,7 +51,7 @@ img {
   padding: 0 2rem;
 }
 
-/* Text Styles*/
+/*************************** Text Styles******************/
 .x-large {
   font-size: 4rem;
   line-height: 1.2;
@@ -90,14 +93,14 @@ img {
   text-align: left;
 }
 
-/* Cards */
+/*************************** Cards *****************/
 .card {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
 }
 
-/* List */
+/**************************  List ********************/
 .list {
   margin: 0.5rem 0;
 }
@@ -106,7 +109,7 @@ img {
   padding-bottom: 0.3rem;
 }
 
-/* Padding */
+/********************** Padding ****************************/
 .p {
   padding: 0.5rem;
 }
@@ -132,7 +135,7 @@ img {
   padding: 3rem 0;
 }
 
-/* Margin */
+/************************* Margin *********************/
 .m {
   margin: 0.5rem;
 }
@@ -159,10 +162,43 @@ img {
 }
 
 
+/************************ Grid ********************/
+
+/* Global Across the boxes */
+[class ^= "box-"] {
+  display: grid;
+  place-items: center;
+  border: solid 5px orangered;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,.1);
+  color: #fff;
+}
+
+.appLayout {
+  height: 90vh;
+  width: 90%;
+  margin: 20px auto; 
+  display: grid; 
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px; 
+}
+
+.appLayout .box-1 {
+  grid-column: span 4;
+}
+
+.appLayout .box-2 {
+  grid-column: span 4;
+}
+
+.appLayout .box-3 {
+  grid-column: span 4;
+}
 
 
 
-/* Grid */
+
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -186,6 +222,10 @@ img {
   grid-template-columns: 2fr 3fr;
   grid-gap: 2rem;
 }
+
+
+
+/* *******************Buttons *************************/
 
 .btn {
   display: inline-block;
@@ -299,7 +339,7 @@ img {
 
 
 
-/* Forms */
+/********************************* Forms *********************/
 input {
   margin: 1.2rem 0;
 }
@@ -354,7 +394,7 @@ table th {
   background: var(--light-color);
 }
 
-/* Navbar */
+/****************************************** Navbar *******************/
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -401,7 +441,7 @@ table th {
   transition: opacity 1000ms ease-in;
 }
 
-/* Mobile Styles */
+/*************************************** Mobile Styles ******************/
 @media (max-width: 700px) {
   .hide-sm {
     display: none;
@@ -413,7 +453,7 @@ table th {
     grid-template-columns: 1fr;
   }
 
-  /* Text Styles */
+  /************************************** Text Styles *******************/
   .x-large {
     font-size: 3rem;
   }
