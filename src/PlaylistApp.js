@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar'
+import ListPlaylists from './ListPlaylists'
+import SourcePlaylist from './SourcePlaylist'
+import DestinationPlaylist from './DestinationPlaylist'
+import Player from './Player'
 
 function PlaylistApp(props) {
 
@@ -8,10 +12,10 @@ function PlaylistApp(props) {
         <Navbar />
 
         <div className="appLayout">
-            <div className="box-1">Box 1</div>
-            <div className="box-2">Box 2</div>
-            <div className="box-3">Box 3</div>
-            <div className="box-4">Box 4</div>
+            <ListPlaylists />
+            <SourcePlaylist />
+            <DestinationPlaylist />
+            <Player />
         </div>
       </>
     );

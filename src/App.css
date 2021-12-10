@@ -22,8 +22,9 @@ body {
   line-height: 1.6;
   /*background-color: #fff;*/
   color: #333;
-  background: linear-gradient(lightblue, darkblue);
+  background: linear-gradient(lightblue, rgb(82, 82, 133));
   height: 100vh;
+  overflow: hidden;
 }
 
 a {
@@ -96,7 +97,7 @@ img {
 /*************************** Cards *****************/
 .card {
   padding: 1rem;
-  border: #ccc 1px dotted;
+  border: rgb(212, 208, 208) 1px dotted;
   margin: 0.7rem 0;
 }
 
@@ -242,9 +243,7 @@ img {
 
 
 
-
-
-
+/********* other grid helpers ********************/
 
 
 .grid-2 {
