@@ -164,6 +164,7 @@ img {
 
 /************************ Grid ********************/
 
+
 /* Global Across the boxes */
 [class ^= "box-"] {
   display: grid;
