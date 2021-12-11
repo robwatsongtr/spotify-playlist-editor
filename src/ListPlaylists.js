@@ -1,6 +1,6 @@
 // import React from 'react';
 
-const ListPlaylists = () => {
+const ListPlaylists = (props) => {
 
   return (
     <>

@@ -1,6 +1,6 @@
 // import React from 'react';
 
-const SourcePlaylist = () => {
+const SourcePlaylist = (props) => {
 
   return (
     <>
