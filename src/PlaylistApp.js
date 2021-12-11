@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar'
-import ListPlaylists from './ListPlaylists'
-import SourcePlaylist from './SourcePlaylist'
-import DestinationPlaylist from './DestinationPlaylist'
-import Player from './Player'
+import Navbar from './components/Navbar'
+import ListPlaylists from './components/ListPlaylists'
+import SourcePlaylist from './components/SourcePlaylist'
+import DestinationPlaylist from './components/DestinationPlaylist'
+import Player from './components/Player'
 
 function PlaylistApp(props) {
 
@@ -17,6 +17,7 @@ function PlaylistApp(props) {
             <DestinationPlaylist />
             <Player />
         </div>
+
       </>
     );
 }
