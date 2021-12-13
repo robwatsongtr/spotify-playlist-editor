@@ -2,7 +2,7 @@
 
 /******************* Global Styles **********************/
 :root {
-  --primary-color: #204f6e;
+  --primary-color: #42515b;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -22,9 +22,10 @@ body {
   line-height: 1.6;
   /*background-color: #fff;*/
   color: #333;
-  background: linear-gradient(lightblue, rgb(82, 82, 133));
+  background: rgb(67, 61, 61);
   height: 100vh;
-  overflow: hidden;
+  overflow: hidden; 
+  overflow-y: scroll;
 }
 
 a {
@@ -177,7 +178,6 @@ img {
   color: #fff;
   overflow: hidden; 
   overflow-y: scroll;
-  overflow-x: scroll; 
 }
 
 /****** the container ********/
@@ -188,7 +188,7 @@ img {
   margin: 20px auto; 
 
   display: grid; 
-  gap: 10px; 
+  gap: 5px; 
 }
 
 
@@ -223,7 +223,7 @@ img {
 
   .appLayout {
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 800px 200px
+    grid-template-rows: 900px 100px
   }
 
   .appLayout .box-1 {
