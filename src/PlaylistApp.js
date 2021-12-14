@@ -5,7 +5,9 @@ import SourcePlaylist from './components/SourcePlaylist'
 import DestinationPlaylist from './components/DestinationPlaylist'
 import Player from './components/Player'
 
-function PlaylistApp(props) {
+const PlaylistApp = (props) => {
+
+  const currentToken = props.token; 
 
    return (
       <>
