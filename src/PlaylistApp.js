@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar'
 import ListPlaylists from './components/ListPlaylists'
 import SourcePlaylist from './components/SourcePlaylist'
@@ -11,7 +11,11 @@ const PlaylistApp = (props) => {
 
   const currentToken = props.token; 
 
-  const [currentUserID, setCurrentUserID] = useState( { userId: ''} )
+  // State Variables 
+  const [currentUser, setCurrentUser] = useState({ 
+    currentUserName: '',
+    currentUserId: ''
+  })
 
   const [userPlaylists, setUserPlaylists] = useState({
     selectedPlaylist: '',
@@ -19,15 +23,47 @@ const PlaylistApp = (props) => {
   })
   
 
+  // On render retrieve the current users profile from Spotify api
+  // in order to get their name and user id. 
+  // (then retrieve their playlists and display them....)
+  useEffect( () => {
+
+    axios('https://api.spotify.com/v1/me', {
+      method: 'GET',
+      headers: { 'Authorization' : 'Bearer ' + currentToken}
+    })
+    .then( currentUserResponse => {
+      setCurrentUser({
+        currentUserName: currentUserResponse.display_name,
+        currentUserId: currentUserResponse.id
+      })
+    })
+
+  },[])
+  
+
   return (
     <>
       <Navbar />
 
       <div className="appLayout">
-          <ListPlaylists />
-          <SourcePlaylist />
-          <DestinationPlaylist />
-          <Player />
+
+          <ListPlaylists 
+
+          />
+
+          <SourcePlaylist 
+          
+          />
+
+          <DestinationPlaylist 
+          
+          />
+
+          <Player 
+          
+          />
+
       </div>
 
     </>
