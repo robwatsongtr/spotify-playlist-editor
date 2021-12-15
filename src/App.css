@@ -170,7 +170,7 @@ img {
 /* Global Across the boxes */
 [class ^= "box-"] {
   display: grid;
-  place-items: center;
+  /* place-items: center; */
   border: solid 3px rgb(31, 11, 3);
   padding: 10px;
   border-radius: 10px;
