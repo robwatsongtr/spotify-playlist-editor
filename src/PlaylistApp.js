@@ -25,7 +25,7 @@ const PlaylistApp = (props) => {
   
   // On render, retrieve the current users profile from Spotify api
   // in order to get their user name and user id. 
-  // (then retrieve their playlists and display them....)
+  // Then, retrieve the users' playlists and store them in state. 
   useEffect( () => {
 
     axios('https://api.spotify.com/v1/me', {
