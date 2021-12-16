@@ -43,7 +43,7 @@ const PlaylistApp = (props) => {
     .then( userinfo => {
      return axios(`https://api.spotify.com/v1/users/${userinfo.currentUserId}/playlists`, {
         method: 'GET',
-        nheaders: { 'Authorization' : 'Bearer ' + currentToken}
+        headers: { 'Authorization' : 'Bearer ' + currentToken}
       }) 
     })
     .then( playlistsLists => {
