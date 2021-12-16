@@ -21,10 +21,10 @@ const PlaylistApp = (props) => {
     selectedPlaylist: '',
     listofPlaylistsFromApi: []
   })
-  
 
-  // On render retrieve the current users profile from Spotify api
-  // in order to get their name and user id. 
+  
+  // On render, retrieve the current users profile from Spotify api
+  // in order to get their user name and user id. 
   // (then retrieve their playlists and display them....)
   useEffect( () => {
 
@@ -33,14 +33,29 @@ const PlaylistApp = (props) => {
       headers: { 'Authorization' : 'Bearer ' + currentToken}
     })
     .then( currentUserResponse => {
-      setCurrentUser({
-        currentUserName: currentUserResponse.display_name,
-        currentUserId: currentUserResponse.id
+      let info = {
+        currentUserName: currentUserResponse.data.display_name,
+        currentUserId: currentUserResponse.data.id
+      }
+      setCurrentUser(info)
+      return info
+    })
+    .then( userinfo => {
+     return axios(`https://api.spotify.com/v1/users/${userinfo.currentUserId}/playlists`, {
+        method: 'GET',
+        nheaders: { 'Authorization' : 'Bearer ' + currentToken}
+      }) 
+    })
+    .then( playlistsLists => {
+      setUserPlaylists({
+        listofPlaylistsFromApi: playlistsLists.data.items
       })
     })
 
-  },[])
+  },[currentToken])
   
+  console.log(currentUser);
+  console.log(userPlaylists); 
 
   return (
     <>
