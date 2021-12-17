@@ -54,7 +54,7 @@ const PlaylistApp = (props) => {
 
   },[currentToken])
   
-  console.log(currentUser);
+  // console.log(currentUser);
   console.log(userPlaylists); 
 
   return (
@@ -64,20 +64,14 @@ const PlaylistApp = (props) => {
       <div className="appLayout">
 
           <ListPlaylists 
-
+            playlistsToDisplay = {userPlaylists}
           />
 
-          <SourcePlaylist 
-          
-          />
+          <SourcePlaylist />
 
-          <DestinationPlaylist 
-          
-          />
+          <DestinationPlaylist />
 
-          <Player 
-          
-          />
+          <Player />
 
       </div>
 
