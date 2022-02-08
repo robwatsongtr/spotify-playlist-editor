@@ -25,6 +25,7 @@ const PlaylistApp = (props) => {
   
   // On render, retrieve the current users profile from Spotify api
   // in order to get their user name and user id. 
+  //
   // Then, retrieve the users' playlists and store them in state. 
   useEffect( () => {
 
@@ -48,13 +49,14 @@ const PlaylistApp = (props) => {
     })
     .then( playlistsLists => {
       setUserPlaylists({
+        selectedPlaylist: userPlaylists.selectedPlaylist,
         listofPlaylistsFromApi: playlistsLists.data.items
       })
     })
 
-  },[currentToken])
+  },[currentToken, userPlaylists.selectedPlaylist])
   
-  // console.log(currentUser);
+  console.log(currentUser);
   console.log(userPlaylists); 
 
   return (
@@ -64,7 +66,8 @@ const PlaylistApp = (props) => {
       <div className="appLayout">
 
           <ListPlaylists 
-            playlistsToDisplay = {userPlaylists}
+            label="All User Playlists:"
+            items={ userPlaylists.listofPlaylistsFromApi } 
           />
 
           <SourcePlaylist />
