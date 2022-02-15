@@ -26,7 +26,9 @@ const PlaylistApp = (props) => {
   // On render, retrieve the current users profile from Spotify api
   // in order to get their user name and user id. 
   //
-  // Then, retrieve the users' playlists and store them in state. 
+  // Then, retrieve the users' playlists and store them in state.
+  // return returns from each link in the promise chain.
+  //  
   useEffect( () => {
 
     axios('https://api.spotify.com/v1/me', {
@@ -67,7 +69,7 @@ const PlaylistApp = (props) => {
 
           <ListPlaylists 
             label="All User Playlists:"
-            items={ userPlaylists.listofPlaylistsFromApi } 
+            items={ userPlaylists.listofPlaylistsFromApi }  
           />
 
           <SourcePlaylist />

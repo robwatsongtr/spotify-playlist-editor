@@ -4,12 +4,23 @@ const ListPlaylists = props => {
 
   console.log(props)
 
+  const playlists = props.items.map(playlistItem => {
+    return (
+      <span>
+        {playlistItem.name}
+      </span>
+    )
+  })
+  
   return (
-    <>
-      <div className="box-1">
-        List of Playlists (1)<br></br>
-        
-      </div>
+    <> 
+        <div className="box-1"> 
+          
+          <div className="list-group">
+          All Playlists<br></br>
+              { playlists }
+          </div>
+        </div>
     </>
   )
 
