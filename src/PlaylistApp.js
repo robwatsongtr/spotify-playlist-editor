@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar'
 import ListPlaylists from './components/ListPlaylists'
-import SourcePlaylist from './components/SourcePlaylist'
-import DestinationPlaylist from './components/DestinationPlaylist'
+import PlaylistA from './components/PlaylistA'
+import PlaylistB from './components/PlaylistB'
 import Player from './components/Player'
 import axios from 'axios'
 import SpotifyPlayer from 'react-spotify-web-playback'
@@ -27,8 +27,13 @@ const PlaylistApp = (props) => {
   // in order to get their user name and user id. 
   //
   // Then, retrieve the users' playlists and store them in state.
-  // return returns from each link in the promise chain.
-  //  
+  // 
+  // *Return returns from each link in the promise chain.* 
+  //
+  // 2/19/22, questiohn for Robert: how do I api call to get the next 50? 
+  // reminder that there is an offset query parameter 
+
+
   useEffect( () => {
 
     axios('https://api.spotify.com/v1/me', {
@@ -44,7 +49,7 @@ const PlaylistApp = (props) => {
       return info
     })
     .then( userinfo => {
-     return axios(`https://api.spotify.com/v1/users/${userinfo.currentUserId}/playlists`, {
+     return axios(`https://api.spotify.com/v1/users/${userinfo.currentUserId}/playlists?limit=50`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + currentToken}
       }) 
@@ -56,10 +61,19 @@ const PlaylistApp = (props) => {
       })
     })
 
-  },[currentToken, userPlaylists.selectedPlaylist])
+  },[currentToken, currentUser, userPlaylists.selectedPlaylist])
   
-  console.log(currentUser);
+  // console.log(currentUser);
   console.log(userPlaylists); 
+
+  // -----Playlist Clicked ------------------------------------------
+
+  const playlistClicked = val => {
+
+    alert('playlist clicked ', val); 
+
+  }
+ 
 
   return (
     <>
@@ -70,11 +84,12 @@ const PlaylistApp = (props) => {
           <ListPlaylists 
             label="All User Playlists:"
             items={ userPlaylists.listofPlaylistsFromApi }  
+            clicked={ playlistClicked }
           />
 
-          <SourcePlaylist />
+          <PlaylistA />
 
-          <DestinationPlaylist />
+          <PlaylistB />
 
           <Player />
 

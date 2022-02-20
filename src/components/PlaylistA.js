@@ -1,15 +1,15 @@
 // import React from 'react';
 
-const SourcePlaylist = (props) => {
+const PlaylistA = (props) => {
 
   return (
     <>
       <div className="box-2">
-        Source Playlist (2) <br></br>
+         A 
       </div>
     </>
   )
 
 }
 
-export default SourcePlaylist;
+export default PlaylistA;

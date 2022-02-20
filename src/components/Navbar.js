@@ -3,7 +3,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-primary">
+      <div className="navbar">
         <h1>Spotify Playlist Editor</h1>
       </div>
     </>
