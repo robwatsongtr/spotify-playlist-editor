@@ -5,7 +5,7 @@ const PlaylistB = (props) => {
   return (
     <>
      <div className="box-3">
-      B <br></br>
+      B 
      </div> 
     </>
   )

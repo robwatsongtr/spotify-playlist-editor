@@ -7,12 +7,14 @@ const ListPlaylists = props => {
     props.clicked(e.target.id);
   }
 
+  // where does 'items' come from? 
   const playlists = props.items.map( (playlistItem, idx) => {
     return (    
       <button 
         className="btn-dark"
         key={idx}
         onClick={ clicked }
+        id={playlistItem.id}
       >
         {playlistItem.name} 
       </button>

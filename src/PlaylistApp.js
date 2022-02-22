@@ -51,7 +51,7 @@ const PlaylistApp = (props) => {
     .then( userinfo => {
      return axios(`https://api.spotify.com/v1/users/${userinfo.currentUserId}/playlists?limit=50`, {
         method: 'GET',
-        headers: { 'Authorization' : 'Bearer ' + currentToken}
+        headers: { 'Authorization' : 'Bearer ' + currentToken }
       }) 
     })
     .then( playlistsLists => {
@@ -61,16 +61,25 @@ const PlaylistApp = (props) => {
       })
     })
 
-  },[currentToken, currentUser, userPlaylists.selectedPlaylist])
+  },[currentToken, userPlaylists.selectedPlaylist])
   
   // console.log(currentUser);
-  console.log(userPlaylists); 
+  // console.log(userPlaylists); 
 
   // -----Playlist Clicked ------------------------------------------
 
   const playlistClicked = val => {
 
-    alert('playlist clicked ', val); 
+    // store the userPlaylists state variable into a new variable
+    const playlistList = [...userPlaylists.listofPlaylistsFromApi]
+
+    // filter down to the playlist clicked on
+    const playlistInfo = playlistList.filter( p => p.id === val );
+    
+    console.log("playlist cLicked on ", playlistInfo);
+
+    // store in state
+
 
   }
  
@@ -82,7 +91,7 @@ const PlaylistApp = (props) => {
       <div className="appLayout">
 
           <ListPlaylists 
-            label="All User Playlists:"
+            label="All User Playlists"
             items={ userPlaylists.listofPlaylistsFromApi }  
             clicked={ playlistClicked }
           />
