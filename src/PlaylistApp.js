@@ -21,7 +21,9 @@ const PlaylistApp = (props) => {
     listofPlaylistsFromApi: []
   })
 
-  const [playlistDetail, setPlaylistDetail] = useState(null);
+  const [playlistTracks, setPlaylistTracks] = useState({
+    listofTracksFromPlaylist: []
+  })
 
   
   // On render, retrieve the current users profile from Spotify api
@@ -76,11 +78,26 @@ const PlaylistApp = (props) => {
 
     // filter down to the playlist clicked on
     const playlistInfo = playlistList.filter( p => p.id === val );
-      console.log("playlist cLicked on: ", playlistInfo);
+    const playlistID = playlistInfo[0].id;
+    
+    // sanity check 
+    console.log("playlist cLicked on:", playlistInfo);
+    console.log('id:', playlistID);
 
-    // store url of tracks in state
-    setPlaylistDetail(playlistInfo[0].tracks.href);
-      console.log('URL of tracks in playlist: ', playlistDetail);
+    // fetch the tracks of the playlist with axios and store in state
+    axios(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, {
+      method: 'GET',
+      headers: {
+        'Authorization' : 'Bearer ' + currentToken
+      }
+    })
+    .then( playlistResponse => {
+      setPlaylistTracks({
+        listofTracksFromPlaylist: playlistResponse.data.items
+      })
+    })
+
+    console.log(playlistTracks)
 
   }
  
