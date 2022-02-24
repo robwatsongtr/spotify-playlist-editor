@@ -18,9 +18,10 @@ const PlaylistApp = (props) => {
   })
 
   const [userPlaylists, setUserPlaylists] = useState({
-    selectedPlaylist: '',
     listofPlaylistsFromApi: []
   })
+
+  const [playlistDetail, setPlaylistDetail] = useState(null);
 
   
   // On render, retrieve the current users profile from Spotify api
@@ -56,30 +57,30 @@ const PlaylistApp = (props) => {
     })
     .then( playlistsLists => {
       setUserPlaylists({
-        selectedPlaylist: userPlaylists.selectedPlaylist,
         listofPlaylistsFromApi: playlistsLists.data.items
       })
     })
 
-  },[currentToken, userPlaylists.selectedPlaylist])
+  },[currentToken])
   
   // console.log(currentUser);
   // console.log(userPlaylists); 
+
 
   // -----Playlist Clicked ------------------------------------------
 
   const playlistClicked = val => {
 
     // store the userPlaylists state variable into a new variable
-    const playlistList = [...userPlaylists.listofPlaylistsFromApi]
+    const playlistList = [...userPlaylists.listofPlaylistsFromApi];
 
     // filter down to the playlist clicked on
     const playlistInfo = playlistList.filter( p => p.id === val );
-    
-    console.log("playlist cLicked on ", playlistInfo);
+      console.log("playlist cLicked on: ", playlistInfo);
 
-    // store in state
-
+    // store url of tracks in state
+    setPlaylistDetail(playlistInfo[0].tracks.href);
+      console.log('URL of tracks in playlist: ', playlistDetail);
 
   }
  

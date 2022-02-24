@@ -2,12 +2,14 @@
 
 const ListPlaylists = props => {
 
+  // when a playlist is clicked on, it sends data back to the parent component
+  // via props. Lifting state up. 
   const clicked = e => {
     e.preventDefault();
     props.clicked(e.target.id);
   }
 
-  // where does 'items' come from? 
+  
   const playlists = props.items.map( (playlistItem, idx) => {
     return (    
       <button 
