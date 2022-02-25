@@ -1,3 +1,7 @@
+Currently in progress. This app allows a spotify user to manipulate playlists and their contents in a straightforward way, allowing moving trakcs between two playlists to be fast and seamless, as that's what it does!
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
