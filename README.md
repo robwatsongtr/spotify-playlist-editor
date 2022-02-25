@@ -1,4 +1,4 @@
-Currently in progress. This app allows a spotify user to manipulate playlists and their contents in a straightforward way, allowing moving trakcs between two playlists to be fast and seamless, as that's what it does!
+Currently in progress. This app allows a spotify user to manipulate playlists and their contents in a straightforward way, allowing moving tracks between two playlists to be fast and seamless, as that's what it does!
 
 
 
