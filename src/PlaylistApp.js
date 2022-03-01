@@ -25,11 +25,13 @@ const PlaylistApp = (props) => {
     listofTracksFromPlaylist: []
   })
 
+  const [trackDetail, setTrackDetail] = useState(null);
+
   
   // On render, retrieve the current users profile from Spotify api
   // in order to get their user name and user id. 
   //
-  // Then, retrieve the users' playlists and store them in state.
+  // Then, retrieve the user's playlists and store them in state.
   // 
   // *Return returns from each link in the promise chain.* 
   //
@@ -62,6 +64,9 @@ const PlaylistApp = (props) => {
         listofPlaylistsFromApi: playlistsLists.data.items
       })
     })
+    .catch( error => {
+      console.log(`Caught by .catch ${error}`)
+    })
 
   },[currentToken])
   
@@ -76,13 +81,13 @@ const PlaylistApp = (props) => {
     // store the userPlaylists state variable into a new variable
     const playlistList = [...userPlaylists.listofPlaylistsFromApi];
 
-    // filter down to the playlist clicked on
+    // select by filtering down to the playlist clicked on
     const playlistInfo = playlistList.filter( p => p.id === val );
     const playlistID = playlistInfo[0].id;
     
     // sanity check 
-    console.log("playlist cLicked on:", playlistInfo);
-    console.log('id:', playlistID);
+    console.log('Playlist clicked on:', playlistInfo);
+    console.log('Playlist id:', playlistID);
 
     // fetch the tracks of the playlist with axios and store in state
     axios(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, {
@@ -96,11 +101,29 @@ const PlaylistApp = (props) => {
         listofTracksFromPlaylist: playlistResponse.data.items
       })
     })
-
-    console.log(playlistTracks)
+    .catch( error => {
+      console.log(`Caught by .catch ${error}`)
+    })
 
   }
+
+  const trackClicked = val => {
+
+    // store playListTracks state in a new array
+    const currentTracks = [...playlistTracks.listofTracksFromPlaylist]
+
+    // select track clicked on 
+    const trackInfo = currentTracks.filter( t => t.track.id === val )
+    
+
+    // sanity check
+    console.log('Track clicked on:', trackInfo);
+    
+
+  }
+
  
+  console.log(playlistTracks);
 
   return (
     <>
@@ -109,12 +132,16 @@ const PlaylistApp = (props) => {
       <div className="appLayout">
 
           <ListPlaylists 
-            label="All User Playlists"
+            label="All-User-Playlists"
             items={ userPlaylists.listofPlaylistsFromApi }  
             clicked={ playlistClicked }
           />
 
-          <PlaylistA />
+          <PlaylistA 
+            label="A-Tracks-From-Playlist"
+            items={ playlistTracks.listofTracksFromPlaylist }
+            clicked= { trackClicked }
+          />
 
           <PlaylistB />
 
