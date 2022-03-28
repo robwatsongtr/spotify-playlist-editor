@@ -38,7 +38,6 @@ const PlaylistApp = (props) => {
   // 2/19/22, questiohn for Robert: how do I api call to get the next 50? 
   // reminder that there is an offset query parameter 
 
-
   useEffect( () => {
 
     axios('https://api.spotify.com/v1/me', {
@@ -72,9 +71,6 @@ const PlaylistApp = (props) => {
   
   // console.log(currentUser);
   // console.log(userPlaylists); 
-
-
-  // -----Playlist Clicked ------------------------------------------
 
   const playlistClicked = val => {
 
@@ -115,40 +111,34 @@ const PlaylistApp = (props) => {
     // select track clicked on 
     const trackInfo = currentTracks.filter( t => t.track.id === val )
     
-
     // sanity check
     console.log('Track clicked on:', trackInfo);
     
-
   }
 
- 
   console.log(playlistTracks);
 
   return (
     <>
       <Navbar />
-
       <div className="appLayout">
-
           <ListPlaylists 
             label="All-User-Playlists"
             items={ userPlaylists.listofPlaylistsFromApi }  
             clicked={ playlistClicked }
           />
-
           <PlaylistA 
             label="A-Tracks-From-Playlist"
             items={ playlistTracks.listofTracksFromPlaylist }
             clicked= { trackClicked }
           />
-
-          <PlaylistB />
-
-          <Player />
-
+          <PlaylistB 
+          
+          />
+          <Player 
+          
+          />
       </div>
-
     </>
   );
 }
